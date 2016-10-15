@@ -20,9 +20,4 @@ Vagrant.configure(2) do |config|
 	
   SHELL
 
-  #command = "cp #{File.join('/vagrant/', 'app.js')} #{'app.js'}"  
-  #config.vm.provision :shell, :inline => command
-  
-  
-  # config.vm.provision :puppet
 end
