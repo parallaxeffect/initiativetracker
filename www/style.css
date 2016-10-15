@@ -1,14 +1,32 @@
 
 h1 { font: bold 36px Helvetica, Sans-Serif; }
 
-#list { list-style: none; }
-#list li { position: relative; 
-         margin: 0 0 8px 0;
-         padding: 0 0 0 70px;
-         width: 607px;
-		 background: rgb(240, 240, 240);
-	   }
-span.name { width: 400px;
-           padding: 8px;
-           background: red;  
-		 }
+#list {
+	list-style: none;
+	width: 350px;
+	margin: 50px auto;
+}
+
+#list li {
+	margin: 0;
+	height: 45px;
+	line-height: 48px;
+	font-size: 1.4em;
+	border: 1px solid;
+	text-indent: 15px;
+	color: #fff;
+	 background: -moz-linear-gradient(top,  rgb(78,82,91) 0%, rgb(57,61,68) 100%);
+	
+}
+
+.name {
+	display: inline-block;
+	width: 200px;
+}
+
+.initiative {
+	display: inline-block;
+	border: 1px solid;
+	height: 40px;
+	width: 40px;
+}

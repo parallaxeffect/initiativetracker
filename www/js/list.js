@@ -5,5 +5,5 @@ function initialize() {
 		
 	$("span.initiative").editable(function(value, settings) {
 		return(value);
-	}, { type: 'textarea', submit: 'OK', })
+	}, { type: 'text', submit: 'OK', })
 };
