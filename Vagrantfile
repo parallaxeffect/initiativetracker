@@ -13,6 +13,8 @@ Vagrant.configure(2) do |config|
 	curl -sL https://deb.nodesource.com/setup_4.x | sh
 	apt-get install -y nodejs
 	
+	npm install express
+	
   SHELL
 
   #command = "cp #{File.join('/vagrant/', 'app.js')} #{'app.js'}"  
