@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
 	curl -sL https://deb.nodesource.com/setup_4.x | sh
 	apt-get install -y nodejs
 	
-	npm install express
+	npm install --no-sys-links express
 	
 	# Node will not run app.js out of a remote directory
 	cp /vagrant/app.js .
