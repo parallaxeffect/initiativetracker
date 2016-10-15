@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.network "forwarded_port", guest: 8080, host: 8080
 
-  command = "cp #{File.join('/vagrant/', 'app.js')} #{'app.js'}"  
+  #command = "cp #{File.join('/vagrant/', 'app.js')} #{'app.js'}"  
   config.vm.provision :shell, :inline => command
   
   
