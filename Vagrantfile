@@ -15,6 +15,9 @@ Vagrant.configure(2) do |config|
 	
 	npm install express
 	
+	# Node will not run app.js out of a remote directory
+	cp /vagrant/app.js .
+	
   SHELL
 
   #command = "cp #{File.join('/vagrant/', 'app.js')} #{'app.js'}"  
