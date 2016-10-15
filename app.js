@@ -1,9 +1,7 @@
 var express = require('express');
 var app = express();
 
-app.get('/', function(req, res) {
-  res.sendFile('/vagrant/www/index.html');
-});
+app.use('/', express.static('/vagrant/www'));
 
 app.listen(8080, function(){
 	console.log("Listening on 8080");
