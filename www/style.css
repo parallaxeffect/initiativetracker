@@ -8,7 +8,7 @@ h1 { font: bold 36px Helvetica, Sans-Serif; }
          width: 607px;
 		 background: rgb(240, 240, 240);
 	   }
-#list li span { width: 200px;
-             padding: 8px;
-             
-		   }
+span.name { width: 400px;
+           padding: 8px;
+           background: red;  
+		 }
