@@ -22,13 +22,14 @@ h1 { font: bold 36px Helvetica, Sans-Serif; }
 
 .name {
 	display: inline-block;
-	width: 200px;
+	min-width: 200px;
+	min-height: 45px;
 }
 
 .initiative {
 	display: inline-block;
 	border: 1px solid;
-	height: 38px;
-	width: 38px;
+	width: 50px;
+	font-size: 1em;
+	text-align: center;
 }
-
