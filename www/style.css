@@ -15,14 +15,21 @@ h1 { font: bold 36px Helvetica, Sans-Serif; }
 	font-size: 1.4em;
 	border: 1px solid;
 	border-radius: 8px;
-	text-indent: 10px;
 	color: #fff;
-	background: -moz-linear-gradient(top,  rgb(78,82,91) 0%, rgb(57,61,68) 100%);
+	background: -webkit-linear-gradient(top,  rgb(78,82,91) 0%, rgb(57,61,68) 100%);
+	background: -o-linear-gradient(top,  rgb(78,82,91) 0%, rgb(57,61,68) 100%);
+	background: -moz-linear-gradient(rgb(78,82,91) 0%, rgb(57,61,68) 100%);
+	background: linear-gradient(top,  rgb(78,82,91) 0%, rgb(57,61,68) 100%);
 	
+}
+
+.fix {
+	height: 45px;
 }
 
 .name {
 	display: inline-block;
+	margin-left: 10px;
 	min-width: 200px;
 	min-height: 45px;
 }
@@ -35,12 +42,21 @@ h1 { font: bold 36px Helvetica, Sans-Serif; }
 	text-align: center;
 }
 
-#addbtn {
-	background: darkgreen;
-	border: 1px black;
+button {
+border: 1px black;
 	border-radius: 4px;
 	color: white;
 	font-weight: bold;
-	font-size: 1.5em;
+	font-size: 1.2em;	
+}
+
+#addbtn {
+	background: darkgreen;
+	
 	margin-left: 350px;
+}
+
+button.delete {
+	background: red;
+	margin-left: 20px;
 }

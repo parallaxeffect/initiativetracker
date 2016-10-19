@@ -2,6 +2,7 @@ function initialize() {
     addCharacter();
 	$("#addbtn").click(addCharacter);
 	$("#list").on("change", ".initiative", sortList);
+	$("#list").on("click", ".delete", deleteCharacter);
 };
 
 function sortList() {
@@ -19,8 +20,13 @@ function initValue(a) {
 
 function addCharacter() {
 	var tr = $("<tr />")
-	    .append("<span class='name' contenteditable='true'>")
-		.append("<input class='initiative' type='number'>");
+	    .append("<span class='name' contenteditable='true'><br></span>")
+		.append("<input class='initiative' type='number'>")
+		.append("<button class='delete'>x</button>");
 		
 	$("#list").append(tr);
+}
+
+function deleteCharacter(e) {
+	$(e.target).parent().remove();
 }
