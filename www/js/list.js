@@ -1,15 +1,11 @@
 function initialize() {
-    $('li')
-        .wrapInner("<span class='name' contenteditable='true'>")
-		.append("<input class='initiative' type='number'></span>")
-	
-	$('.initiative').change(sortList);
-	
+    addCharacter();
 	$("#addbtn").click(addCharacter);
+	$("#list").on("change", ".initiative", sortList);
 };
 
 function sortList() {
-	$('#list li').sort(sort_li)
+	$('#list tr').sort(sort_li)
 	             .appendTo('#list');
 }
 
@@ -22,9 +18,9 @@ function initValue(a) {
 }
 
 function addCharacter() {
-	var li = $("<li />")
-	    .wrapInner("<span class='name' contenteditable='true'>")
-		.append("<input class='initiative' type='number'></span>");
-	
-	$("#list").append(li);
+	var tr = $("<tr />")
+	    .append("<span class='name' contenteditable='true'>")
+		.append("<input class='initiative' type='number'>");
+		
+	$("#list").append(tr);
 }

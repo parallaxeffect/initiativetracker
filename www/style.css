@@ -7,7 +7,8 @@ h1 { font: bold 36px Helvetica, Sans-Serif; }
 	margin: 30px;
 }
 
-#list li {
+#list tr {
+	display: block;
 	margin: 0;
 	height: 45px;
 	line-height: 45px;
@@ -41,5 +42,5 @@ h1 { font: bold 36px Helvetica, Sans-Serif; }
 	color: white;
 	font-weight: bold;
 	font-size: 1.5em;
-	margin-left: 380px;
+	margin-left: 350px;
 }
