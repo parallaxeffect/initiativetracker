@@ -33,3 +33,13 @@ h1 { font: bold 36px Helvetica, Sans-Serif; }
 	font-size: 1em;
 	text-align: center;
 }
+
+#addbtn {
+	background: darkgreen;
+	border: 1px black;
+	border-radius: 4px;
+	color: white;
+	font-weight: bold;
+	font-size: 1.5em;
+	margin-left: 380px;
+}

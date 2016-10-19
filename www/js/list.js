@@ -4,6 +4,8 @@ function initialize() {
 		.append("<input class='initiative' type='number'></span>")
 	
 	$('.initiative').change(sortList);
+	
+	$("#addbtn").click(addCharacter);
 };
 
 function sortList() {
@@ -17,4 +19,12 @@ function sort_li(a, b) {
 
 function initValue(a) {
 	return parseInt($(a).find("input.initiative").val());
+}
+
+function addCharacter() {
+	var li = $("<li />")
+	    .wrapInner("<span class='name' contenteditable='true'>")
+		.append("<input class='initiative' type='number'></span>");
+	
+	$("#list").append(li);
 }
