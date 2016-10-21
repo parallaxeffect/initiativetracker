@@ -3,14 +3,13 @@ h1 { font: bold 36px Helvetica, Sans-Serif; }
 
 #list {
 	list-style: none;
-	width: 350px;
 	margin: 30px;
+	padding: 5px;
 }
 
 #list tr {
-	display: block;
 	margin: 0;
-	height: 45px;
+	height: 50px;
 	line-height: 45px;
 	font-size: 1.4em;
 	border: 1px solid;
@@ -23,15 +22,40 @@ h1 { font: bold 36px Helvetica, Sans-Serif; }
 	
 }
 
-.fix {
-	height: 45px;
+#list tr.header {
+	color: #000;
+	background: none;
+}
+
+tr.header td {
+	margin-left: 10px;
+}
+
+.field {
+	display: inline-block;
+	margin-left: 10px;
+	margin: 5px;
+	height: 35px;
+	min-height: 35px;
+	background: rgb(108,122,131);
+    text-align: center;
 }
 
 .name {
-	display: inline-block;
-	margin-left: 10px;
 	min-width: 200px;
-	min-height: 45px;
+	text-align: left;
+}
+
+.init {
+	min-width: 70px;
+}
+
+.AC {
+	min-width: 40px;
+}
+
+.DC {
+	min-width: 40px;
 }
 
 .initiative {
@@ -58,5 +82,5 @@ border: 1px black;
 
 button.delete {
 	background: red;
-	margin-left: 20px;
+	margin: 10px;
 }
