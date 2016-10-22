@@ -30,14 +30,25 @@ function initValue(a) {
 	return parseInt($(a).find("input.initiative").val());
 }
 
+function getContent(field) {
+	if (field.type == "field") {
+		return $("<span contenteditable='true'>").addClass("field").addClass(field.field).html("<br>");
+	}
+	if (field.type == "input") {
+		return $("<input type='number'>").addClass(field.field);
+	}
+	if (field.type == "delete") {
+		return $("<button title='Delete this character'>").addClass("delete").html("x");
+	}
+}
+
 function addCharacter() {
-	var tr = $("<tr />")
-	    .append("<td><span class='name field' contenteditable='true'><br></span></td>")
-		// br fixes firefox display issue
-		.append("<td><input class='initiative' type='number'></td>")
-		.append("<td><span class='AC field' contenteditable='true'><br></span></td>")
-		.append("<td><span class='DC field' contenteditable='true'><br></span></td>")
-		.append("<td><button class='delete' title='Delete this character'>x</button></td>");
+	var tr = $("<tr />");
+	
+	$.each(fieldlist, function(i, field) {
+		var td = $("<td>").append(getContent(field));
+		tr.append(td);
+	});
 		
 	$(".list tbody").append(tr);
 }
@@ -50,13 +61,6 @@ function addHeader() {
 		tr.append(th);
 	});
 	
-	/*tr
-	    .append("<th class='name'>Character</th>")
-		.append("<th class='init'>Init</th>")
-		.append("<th class='AC'>AC</th>")
-		.append("<th class='DC'>DC</th>")
-		.append("<th>Del</th>");
-		*/
 	$(".list thead").append(tr);
 }
 
