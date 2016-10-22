@@ -8,18 +8,13 @@ h1 { font: bold 36px Helvetica, Sans-Serif; }
 }
 
 #list tr {
-	margin: 0;
-	height: 50px;
-	line-height: 45px;
 	font-size: 1.4em;
-	border: 1px solid;
-	border-radius: 8px;
 	color: #fff;
-	background: -webkit-linear-gradient(top,  rgb(78,82,91) 0%, rgb(57,61,68) 100%);
-	background: -o-linear-gradient(top,  rgb(78,82,91) 0%, rgb(57,61,68) 100%);
-	background: -moz-linear-gradient(rgb(78,82,91) 0%, rgb(57,61,68) 100%);
-	background: linear-gradient(top,  rgb(78,82,91) 0%, rgb(57,61,68) 100%);
-	
+	background: rgb(57,61,68);	
+}
+
+td {
+	padding: 5px;
 }
 
 #list tr.header {
@@ -27,15 +22,8 @@ h1 { font: bold 36px Helvetica, Sans-Serif; }
 	background: none;
 }
 
-tr.header td {
-	margin-left: 10px;
-}
-
 .field {
 	display: inline-block;
-	margin-left: 10px;
-	margin: 5px;
-	height: 35px;
 	min-height: 35px;
 	background: rgb(108,122,131);
     text-align: center;
@@ -59,15 +47,13 @@ tr.header td {
 }
 
 .initiative {
-	display: inline-block;
-	border: 1px solid;
 	width: 50px;
 	font-size: 1em;
 	text-align: center;
 }
 
 button {
-border: 1px black;
+    border: 1px black;
 	border-radius: 4px;
 	color: white;
 	font-weight: bold;
@@ -77,10 +63,9 @@ border: 1px black;
 #addbtn {
 	background: darkgreen;
 	
-	margin-left: 350px;
+	margin-left: 430px;
 }
 
 button.delete {
 	background: red;
-	margin: 10px;
 }
