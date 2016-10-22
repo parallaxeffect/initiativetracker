@@ -1,3 +1,12 @@
+
+var fieldlist = [
+    {field: "name", name: "Character", type: "field"}, 
+	{field: "initiative", name: "Init", type: "input"},
+	{field: "AC", name: "AC", type: "field"},
+	{field: "DC", name: "DC", type: "field"},
+	{field: "Del", name: "Del", type: "delete"}	
+];
+
 function initialize() {
 	addHeader();
     addCharacter();
@@ -34,13 +43,20 @@ function addCharacter() {
 }
 
 function addHeader() {
-	var tr = $("<tr class='header' />")
+	var tr = $("<tr class='header' />");
+	$.each(fieldlist, function(i, field) {
+		var th = $("<th>").addClass(field.field)
+		                .html(field.name);
+		tr.append(th);
+	});
+	
+	/*tr
 	    .append("<th class='name'>Character</th>")
 		.append("<th class='init'>Init</th>")
 		.append("<th class='AC'>AC</th>")
 		.append("<th class='DC'>DC</th>")
 		.append("<th>Del</th>");
-		
+		*/
 	$(".list thead").append(tr);
 }
 
