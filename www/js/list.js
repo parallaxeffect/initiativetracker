@@ -1,14 +1,16 @@
 function initialize() {
 	addHeader();
     addCharacter();
-	$("#addbtn").click(addCharacter);
-	$("#list").on("change", ".initiative", sortList);
-	$("#list").on("click", ".delete", deleteCharacter);
+	highlightFirst();
+	$(".nextbtn").click(highlightNext);
+	$(".addbtn").click(addCharacter);
+	$(".list").on("change", ".initiative", sortList);
+	$(".list").on("click", ".delete", deleteCharacter);
 };
 
 function sortList() {
-	$('#list tr').sort(sort_li)
-	             .appendTo('#list');
+	$('.list tbody tr').sort(sort_li)
+	             .appendTo('.list tbody');
 }
 
 function sort_li(a, b) {
@@ -26,9 +28,9 @@ function addCharacter() {
 		.append("<td><input class='initiative' type='number'></td>")
 		.append("<td><span class='AC field' contenteditable='true'><br></span></td>")
 		.append("<td><span class='DC field' contenteditable='true'><br></span></td>")
-		.append("<td><button class='delete'>x</button></td>");
+		.append("<td><button class='delete' title='Delete this character'>x</button></td>");
 		
-	$("#list").append(tr);
+	$(".list tbody").append(tr);
 }
 
 function addHeader() {
@@ -39,9 +41,26 @@ function addHeader() {
 		.append("<th class='DC'>DC</th>")
 		.append("<th>Del</th>");
 		
-	$("#list").append(tr);
+	$(".list thead").append(tr);
 }
 
 function deleteCharacter(e) {
 	$(e.target).parent().parent().remove();
+}
+
+function highlightFirst() {
+	$(".list tbody").children().first().addClass("highlight");	
+}
+
+function highlightNext() {
+	var highlight = $(".highlight");
+	highlight.removeClass("highlight");
+
+	var next = highlight.next();
+	if (next.length > 0) {
+		next.addClass("highlight");
+	}
+	else {
+		highlightFirst();
+	}
 }

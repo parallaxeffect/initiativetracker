@@ -1,23 +1,27 @@
 
 h1 { font: bold 36px Helvetica, Sans-Serif; }
 
-#list {
+.list {
 	list-style: none;
 	margin: 30px;
 	padding: 5px;
 }
 
-#list tr {
+.list tr {
 	font-size: 1.4em;
 	color: #fff;
 	background: rgb(57,61,68);	
+}
+
+.list .highlight {
+	background: yellow;
 }
 
 td {
 	padding: 5px;
 }
 
-#list tr.header {
+.list tr.header {
 	color: #000;
 	background: none;
 }
@@ -60,10 +64,17 @@ button {
 	font-size: 1.2em;	
 }
 
-#addbtn {
+.buttons {
+	margin-left: 370px;
+}
+
+.addbtn {
 	background: darkgreen;
-	
-	margin-left: 430px;
+}
+
+.nextbtn {
+	background: yellow;
+	color: black;
 }
 
 button.delete {
