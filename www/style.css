@@ -31,6 +31,7 @@ td {
 	min-height: 35px;
 	background: rgb(108,122,131);
     text-align: center;
+	min-width: 40px;
 }
 
 .name {

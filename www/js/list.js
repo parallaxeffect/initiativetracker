@@ -2,9 +2,10 @@
 var fieldlist = [
     {field: "name", name: "Character", type: "field"}, 
 	{field: "initiative", name: "Init", type: "input"},
+	{field: "HP", name: "HP", type: "field"},
 	{field: "AC", name: "AC", type: "field"},
 	{field: "DC", name: "DC", type: "field"},
-	{field: "Del", name: "Del", type: "delete"}	
+	{field: "delete", name: "Del", type: "delete"}	
 ];
 
 function initialize() {
@@ -38,7 +39,7 @@ function getContent(field) {
 		return $("<input type='number'>").addClass(field.field);
 	}
 	if (field.type == "delete") {
-		return $("<button title='Delete this character'>").addClass("delete").html("x");
+		return $("<button title='Delete this character'>").addClass(field.field).html("x");
 	}
 }
 
