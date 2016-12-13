@@ -5,6 +5,7 @@ var fieldlist = [
 	{field: "HP", name: "HP", type: "field"},
 	{field: "AC", name: "AC", type: "field"},
 	{field: "DC", name: "DC", type: "field"},
+	{field: "copy", name: "Cpy", type: "copy"},
 	{field: "delete", name: "Del", type: "delete"}	
 ];
 
@@ -16,6 +17,7 @@ function initialize() {
 	$(".addbtn").click(addCharacter);
 	$(".list").on("change", ".initiative", sortList);
 	$(".list").on("click", ".delete", deleteCharacter);
+	$(".list").on("click", ".copy", copyCharacter);
 };
 
 function sortList() {
@@ -41,6 +43,9 @@ function getContent(field) {
 	if (field.type == "delete") {
 		return $("<button title='Delete this character'>").addClass(field.field).html("x");
 	}
+	if (field.type == "copy") {
+		return $("<button title='Copy this character'>").addClass(field.field).html("C");
+	}
 }
 
 function addCharacter() {
@@ -52,6 +57,11 @@ function addCharacter() {
 	});
 		
 	$(".list tbody").append(tr);
+}
+
+function copyCharacter(e) {
+	var character = $(e.target).closest("tr");
+	character.clone().insertAfter(character);
 }
 
 function addHeader() {
@@ -66,7 +76,7 @@ function addHeader() {
 }
 
 function deleteCharacter(e) {
-	$(e.target).parent().parent().remove();
+	$(e.target).closest("tr").remove();
 }
 
 function highlightFirst() {

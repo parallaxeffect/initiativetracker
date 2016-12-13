@@ -81,3 +81,7 @@ button {
 button.delete {
 	background: red;
 }
+
+button.copy {
+	background: blue;
+}
