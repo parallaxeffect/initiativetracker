@@ -76,11 +76,19 @@ function addHeader() {
 }
 
 function deleteCharacter(e) {
-	$(e.target).closest("tr").remove();
+	var character = $(e.target).closest("tr");
+	if (character.hasClass("highlight")) {
+		highlightNext();
+	}
+	character.remove();
+}
+
+function highlightCharacter(c) {
+	c.addClass("highlight");
 }
 
 function highlightFirst() {
-	$(".list tbody").children().first().addClass("highlight");	
+	highlightCharacter($(".list tbody").children().first());
 }
 
 function highlightNext() {
@@ -89,7 +97,7 @@ function highlightNext() {
 
 	var next = highlight.next();
 	if (next.length > 0) {
-		next.addClass("highlight");
+		highlightCharacter(next);
 	}
 	else {
 		highlightFirst();
