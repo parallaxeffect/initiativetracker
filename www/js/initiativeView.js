@@ -108,6 +108,7 @@ function selectNotes(e) {
 	var index = character.data("index");
 	
 	$(".notesArea").val(characters[index]["notes"]);
+	$(".notesName").text(characters[index]["name"]);
 	notesCharacter = index;
 }
 
