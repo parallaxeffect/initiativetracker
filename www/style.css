@@ -69,6 +69,11 @@ button {
 	margin-left: 370px;
 }
 
+.saveArea {
+	margin-left: 30px;
+	padding: 5px;
+}
+
 .addbtn {
 	background: darkgreen;
 }
@@ -78,10 +83,18 @@ button {
 	color: black;
 }
 
+.savebtn, .loadbtn {
+	background: black;
+}
+
 button.delete {
 	background: red;
 }
 
 button.copy {
 	background: blue;
+}
+
+button.notes {
+	background: tan;
 }
