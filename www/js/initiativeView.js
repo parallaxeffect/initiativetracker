@@ -79,7 +79,11 @@ function newCharacter() {
 
 function copyCharacter(e) {
 	var character = $(e.target).closest("tr");
-	character.clone().insertAfter(character);
+	var index = character.data("index");
+	var newchar = $.extend({}, characters[index]);
+	var newindex = characters.push(newchar) - 1;
+	
+	character.clone().insertAfter(character).data("index", newindex);
 }
 
 function addHeader() {
@@ -107,13 +111,14 @@ function selectNotes(e) {
 	var character = $(e.target).closest("tr");
 	var index = character.data("index");
 	
-	$(".notesArea").val(characters[index]["notes"]);
+	$(".notesArea textarea").val(characters[index]["notes"]);
 	$(".notesName").text(characters[index]["name"]);
+	$(".notesArea").show()
 	notesCharacter = index;
 }
 
 function editNotes() {
-	characters[notesCharacter]["notes"] = $(".notesArea").val();	
+	characters[notesCharacter]["notes"] = $(".notesArea textarea").val();	
 }
 
 function highlightCharacter(c) {
