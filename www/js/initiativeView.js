@@ -1,9 +1,8 @@
 
 
-function initializeView() {
-	addHeader();
-	highlightFirst();
-	
+function InitiativeView() {
+	this.table = $(".list");
+	this.addHeader();
 }
 
 function sortList() {
@@ -62,64 +61,20 @@ function addCharacter(character, i) {
 	$(".list tbody").append(tr);
 }
 
-function addCharacters(chars) {
-	$.each(chars, function(i, character) {
-		if (character) {
-			var index = characters.push(character)-1;
-			addCharacter(character, index);
-		}
-	});
-}
 
-function newCharacter() {
-	var character = {};
-	var index = characters.push(character) - 1;
-	addCharacter(character, index);
-}
 
-function copyCharacter(e) {
-	var character = $(e.target).closest("tr");
-	var index = character.data("index");
-	var newchar = $.extend({}, characters[index]);
-	var newindex = characters.push(newchar) - 1;
-	
-	character.clone().insertAfter(character).data("index", newindex);
-}
 
-function addHeader() {
+InitiativeView.prototype.addHeader = function() {
 	var tr = $("<tr class='header' />");
 	$.each(fieldlist, function(i, field) {
 		var th = $("<th>").addClass(field.field)
 		                .html(field.name);
 		tr.append(th);
 	});
-	
-	$(".list thead").append(tr);
+	this.table.find("thead").append(tr);
 }
 
-function deleteCharacter(e) {
-	var character = $(e.target).closest("tr");
-	var index = character.data("index");
-	delete characters[index];
-	if (character.hasClass("highlight")) {
-		highlightNext();
-	}
-	character.remove();
-}
 
-function selectNotes(e) {
-	var character = $(e.target).closest("tr");
-	var index = character.data("index");
-	
-	$(".notesArea textarea").val(characters[index]["notes"]);
-	$(".notesName").text(characters[index]["name"]);
-	$(".notesArea").show()
-	notesCharacter = index;
-}
-
-function editNotes() {
-	characters[notesCharacter]["notes"] = $(".notesArea textarea").val();	
-}
 
 function highlightCharacter(c) {
 	c.addClass("highlight");

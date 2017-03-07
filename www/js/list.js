@@ -13,10 +13,10 @@ var fieldlist = [
 function initialize() {
 	characters = [];
 	
-	initializeView();
-	
+	view = new InitiativeView();
 	newCharacter();
-	
+	highlightFirst();	
+
 	$(".nextbtn").click(highlightNext);
 	$(".addbtn").click(newCharacter);
 	$("#file").change(loadFile);
@@ -26,7 +26,7 @@ function initialize() {
 	$(".list").on("click", ".notes", selectNotes);
 	$(".list").on("blur", ".field", editField);
 	$(".savebtn").click(save);
-	$(".notesArea").on("input", editNotes);
+	$(".notesArea textarea").on("input", editNotes);
 };
 
 
@@ -37,7 +37,6 @@ function save() {
 	var blob = new Blob([JSON.stringify(chars)], {type: "application/json"});
 	
 	window.saveAs(blob, "my_outfile.json");
-	alert(myjson);
 }
 
 function isCharactersEmpty(chars) {
@@ -46,9 +45,6 @@ function isCharactersEmpty(chars) {
 	});
 }
 
-function clearCharacters() {
-	debug("Clear Characters");
-}
 
 function loadFile(e) {
 	var files = e.target.files;
