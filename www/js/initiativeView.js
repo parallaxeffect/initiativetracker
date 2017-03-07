@@ -5,7 +5,7 @@ function InitiativeView() {
 	this.addHeader();
 }
 
-function sortList() {
+InitiativeView.prototype.sortList = function() {
 	$('.list tbody tr').sort(sort_li)
 	             .appendTo('.list tbody');
 }

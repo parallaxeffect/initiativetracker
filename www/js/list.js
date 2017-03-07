@@ -20,7 +20,7 @@ function initialize() {
 	$(".nextbtn").click(highlightNext);
 	$(".addbtn").click(newCharacter);
 	$("#file").change(loadFile);
-	$(".list").on("change", ".initiative", sortList);
+	$(".list").on("change", ".initiative", view.sortList);
 	$(".list").on("click", ".delete", deleteCharacter);
 	$(".list").on("click", ".copy", copyCharacter);
 	$(".list").on("click", ".notes", selectNotes);
