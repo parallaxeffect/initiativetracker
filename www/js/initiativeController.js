@@ -1,35 +1,41 @@
 function newCharacter() {
+	
 	var character = {};
 	var index = characters.push(character) - 1;
-	addCharacter(character, index);
+	
+	view.addCharacter(character, index);
 }
 
 function addCharacters(chars) {
 	$.each(chars, function(i, character) {
 		if (character) {
 			var index = characters.push(character)-1;
-			addCharacter(character, index);
+			
+			view.addCharacter(character, index);
 		}
 	});
 }
 
 function copyCharacter(e) {
-	var character = $(e.target).closest("tr");
-	var index = character.data("index");
-	var newchar = $.extend({}, characters[index]);
-	var newindex = characters.push(newchar) - 1;
+	var row = $(e.target).closest("tr");
+	var index = row.data("index");
 	
-	character.clone().insertAfter(character).data("index", newindex);
+	var character = $.extend({}, characters[index]);
+	var newindex = characters.push(character) - 1;
+	
+	row.clone().insertAfter(row).data("index", newindex);
 }
 
 function deleteCharacter(e) {
-	var character = $(e.target).closest("tr");
-	var index = character.data("index");
+	var row = $(e.target).closest("tr");
+	var index = row.data("index");
+	
 	delete characters[index];
-	if (character.hasClass("highlight")) {
+	
+	if (row.hasClass("highlight")) {
 		highlightNext();
 	}
-	character.remove();
+	row.remove();
 }
 
 function clearCharacters() {
@@ -37,8 +43,8 @@ function clearCharacters() {
 }
 
 function selectNotes(e) {
-	var character = $(e.target).closest("tr");
-	var index = character.data("index");
+	var row = $(e.target).closest("tr");
+	var index = row.data("index");
 	
 	$(".notesArea textarea").val(characters[index]["notes"]);
 	$(".notesName").text(characters[index]["name"]);

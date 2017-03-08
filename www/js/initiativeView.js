@@ -1,12 +1,14 @@
 
 
 function InitiativeView() {
-	this.table = $(".list");
+	this.table = ".list";
 	this.addHeader();
 }
 
 InitiativeView.prototype.sortList = function() {
-	$('.list tbody tr').sort(sort_li)
+	debug("Sort");
+	debug(this.table);
+	$(this.table).find('tbody tr').sort(sort_li)
 	             .appendTo('.list tbody');
 }
 
@@ -55,7 +57,7 @@ function editField(e) {
 	characters[i][field] = value;
 }
 
-function addCharacter(character, i) {
+InitiativeView.prototype.addCharacter = function (character, i) {
 	
 	var tr = createRow(character, i);	
 	$(".list tbody").append(tr);
@@ -65,13 +67,16 @@ function addCharacter(character, i) {
 
 
 InitiativeView.prototype.addHeader = function() {
+	
+	debug(this.table);
+	
 	var tr = $("<tr class='header' />");
 	$.each(fieldlist, function(i, field) {
 		var th = $("<th>").addClass(field.field)
 		                .html(field.name);
 		tr.append(th);
 	});
-	this.table.find("thead").append(tr);
+	$(this.table).find("thead").append(tr);
 }
 
 
