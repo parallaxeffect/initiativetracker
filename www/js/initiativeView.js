@@ -3,6 +3,12 @@
 function InitiativeView() {
 	this.table = ".list";
 	this.addHeader();
+	
+	$(".list").on("change", ".initiative", this.sortList.bind(this));
+	$(".list").on("click", ".delete", deleteCharacter);
+	$(".list").on("click", ".copy", copyCharacter);
+	$(".list").on("click", ".notes", selectNotes);
+	$(".list").on("blur", ".field", editField);
 }
 
 InitiativeView.prototype.sortList = function() {
@@ -50,11 +56,12 @@ function createRow(character, i) {
 }
 
 function editField(e) {
-	var character = $(e.target).closest("tr");
-	var i = character.data("index");
+	var row = $(e.target).closest("tr");
+	var index = row.data("index");
 	var field = $(e.target).data("field");
 	var value = $(e.target).text();
-	characters[i][field] = value;
+	
+	changeField(index, field, value);
 }
 
 InitiativeView.prototype.addCharacter = function (character, i) {
@@ -67,9 +74,6 @@ InitiativeView.prototype.addCharacter = function (character, i) {
 
 
 InitiativeView.prototype.addHeader = function() {
-	
-	debug(this.table);
-	
 	var tr = $("<tr class='header' />");
 	$.each(fieldlist, function(i, field) {
 		var th = $("<th>").addClass(field.field)
@@ -101,4 +105,12 @@ function highlightNext() {
 		highlightFirst();
 	}
 }
+
+function selectNotes(e) {
+	var row = $(e.target).closest("tr");
+	var index = row.data("index");
+	
+	retrieveNotes(index);
+}
+	
 

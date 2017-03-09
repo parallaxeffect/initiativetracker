@@ -13,20 +13,16 @@ var fieldlist = [
 function initialize() {
 	characters = [];
 	
-	view = new InitiativeView();
+	initView = new InitiativeView();
+	notesView = new NotesView();
 	newCharacter();
 	highlightFirst();	
 
 	$(".nextbtn").click(highlightNext);
 	$(".addbtn").click(newCharacter);
 	$("#file").change(loadFile);
-	$(".list").on("change", ".initiative", view.sortList.bind(view));
-	$(".list").on("click", ".delete", deleteCharacter);
-	$(".list").on("click", ".copy", copyCharacter);
-	$(".list").on("click", ".notes", selectNotes);
-	$(".list").on("blur", ".field", editField);
+	
 	$(".savebtn").click(save);
-	$(".notesArea textarea").on("input", editNotes);
 };
 
 

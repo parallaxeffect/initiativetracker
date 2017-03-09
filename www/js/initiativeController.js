@@ -3,7 +3,7 @@ function newCharacter() {
 	var character = {};
 	var index = characters.push(character) - 1;
 	
-	view.addCharacter(character, index);
+	initView.addCharacter(character, index);
 }
 
 function addCharacters(chars) {
@@ -11,7 +11,7 @@ function addCharacters(chars) {
 		if (character) {
 			var index = characters.push(character)-1;
 			
-			view.addCharacter(character, index);
+			initView.addCharacter(character, index);
 		}
 	});
 }
@@ -23,7 +23,7 @@ function copyCharacter(e) {
 	var character = $.extend({}, characters[index]);
 	var newindex = characters.push(character) - 1;
 	
-	row.clone().insertAfter(row).data("index", newindex);
+	initView.addCharacter(character, newindex);
 }
 
 function deleteCharacter(e) {
@@ -42,18 +42,9 @@ function clearCharacters() {
 	debug("Clear Characters");
 }
 
-function selectNotes(e) {
-	var row = $(e.target).closest("tr");
-	var index = row.data("index");
-	
-	$(".notesArea textarea").val(characters[index]["notes"]);
-	$(".notesName").text(characters[index]["name"]);
-	$(".notesArea").show()
-	notesCharacter = index;
-}
-
-function editNotes() {
-	characters[notesCharacter]["notes"] = $(".notesArea textarea").val();	
+function changeField(index, field, value) {
+	characters[index][field] = value;
+	notesView.changeField(index, field, value);
 }
 
 
