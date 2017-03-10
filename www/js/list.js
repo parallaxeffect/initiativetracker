@@ -5,9 +5,9 @@ var fieldlist = [
 	{field: "HP", name: "HP", type: "field"},
 	{field: "AC", name: "AC", type: "field"},
 	{field: "DC", name: "DC", type: "field"},
-	{field: "copy", name: "Cpy", type: "copy"},
-	{field: "delete", name: "Del", type: "delete"}, 
-	{field: "notes", name: "Notes", type: "notes"}
+	{field: "copy", name: "Cpy", type: "button", title: "Copy this character", html: "C"},
+	{field: "delete", name: "Del", type: "button", title: "Delete this character", html: "x"}, 
+	{field: "notes", name: "Notes", type: "button", title: "View notes", html: "&rarr;"}
 ];
 
 function initialize() {
@@ -25,7 +25,6 @@ function initialize() {
 	$(".savebtn").click(save);
 };
 
-
 function save() {
 	var chars = characters.filter(function (c) {
 		return c;
@@ -41,7 +40,6 @@ function isCharactersEmpty(chars) {
 	});
 }
 
-
 function loadFile(e) {
 	var files = e.target.files;
 	var reader = new FileReader();
@@ -51,9 +49,7 @@ function loadFile(e) {
 	}
 	
 	reader.addEventListener("load", function (e) {
-		debug(e.target.result);	
 		addCharacters(JSON.parse(e.target.result));
-		
 	});
 	reader.readAsText(files[0]);
 }

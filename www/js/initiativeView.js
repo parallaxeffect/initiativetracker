@@ -5,15 +5,21 @@ function InitiativeView() {
 	this.addHeader();
 	
 	$(".list").on("change", ".initiative", this.sortList.bind(this));
-	$(".list").on("click", ".delete", deleteCharacter);
-	$(".list").on("click", ".copy", copyCharacter);
-	$(".list").on("click", ".notes", selectNotes);
+	$(".list").on("click", ".delete", this.buttonClicked.bind(this));
+	$(".list").on("click", ".copy", this.buttonClicked.bind(this));
+	$(".list").on("click", ".notes", this.buttonClicked.bind(this));
 	$(".list").on("blur", ".field", editField);
 }
 
+InitiativeView.prototype.buttonClicked = function (e) {
+	var row = $(e.target).closest("tr");
+	var index = row.data("index");
+	var action = $(e.target).data("action");
+	
+	rowAction(index, action);
+}
+
 InitiativeView.prototype.sortList = function() {
-	debug("Sort");
-	debug(this.table);
 	$(this.table).find('tbody tr').sort(sort_li)
 	             .appendTo('.list tbody');
 }
@@ -28,19 +34,23 @@ function initValue(a) {
 
 function getContent(field, value) {
 	if (field.type == "field") {
-		return $("<span contenteditable='true'>").addClass("field").addClass(field.field).data("field", field.field).append(value).append("<br>");
+		return $("<span contenteditable='true'>")
+			.addClass("field").addClass(field.field)
+			.data("field", field.field)
+			.append(value).append("<br>");
 	}
 	if (field.type == "input") {
-		return $("<input type='number'>").addClass(field.field).val(value);
+		debug ("value:" + value);
+		return $("<input type='number'>")
+			.addClass(field.field)
+			.val(value);
 	}
-	if (field.type == "delete") {
-		return $("<button title='Delete this character'>").addClass(field.field).html("x");
-	}
-	if (field.type == "copy") {
-		return $("<button title='Copy this character'>").addClass(field.field).html("C");
-	}
-	if (field.type == "notes") {
-		return $("<button title='View Notes'>").addClass(field.field).html("&rarr;");
+	if (field.type == "button") {
+		return $("<button>")
+			.attr("title", field.title)
+			.addClass(field.field)
+			.data("action", field.field)
+			.html(field.html);
 	}
 }
 
@@ -70,8 +80,20 @@ InitiativeView.prototype.addCharacter = function (character, i) {
 	$(".list tbody").append(tr);
 }
 
+InitiativeView.prototype.getRow = function(index){
+	return $(".list").find('tr').filter(function (i, r) {
+		return $(r).data("index") == index;
+	});
+}
 
-
+InitiativeView.prototype.deleteCharacter = function (index) {
+	var row = this.getRow(index);
+	
+	if (row.hasClass("highlight")) {
+		highlightNext();
+	}
+	row.remove();
+}
 
 InitiativeView.prototype.addHeader = function() {
 	var tr = $("<tr class='header' />");
@@ -83,7 +105,10 @@ InitiativeView.prototype.addHeader = function() {
 	$(this.table).find("thead").append(tr);
 }
 
-
+InitiativeView.prototype.changeField = function(index, field, value) {
+	var row = this.getRow(index);
+	$(row).find('span.'+field).text(value);  // not tested
+}
 
 function highlightCharacter(c) {
 	c.addClass("highlight");

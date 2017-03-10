@@ -1,45 +1,46 @@
 function newCharacter() {
-	
-	var character = {};
+	addCharacter({});
+}
+
+function addCharacter(character) {
 	var index = characters.push(character) - 1;
-	
 	initView.addCharacter(character, index);
 }
 
 function addCharacters(chars) {
 	$.each(chars, function(i, character) {
 		if (character) {
-			var index = characters.push(character)-1;
-			
-			initView.addCharacter(character, index);
+			addCharacter(character);
 		}
 	});
 }
 
-function copyCharacter(e) {
-	var row = $(e.target).closest("tr");
-	var index = row.data("index");
-	
-	var character = $.extend({}, characters[index]);
-	var newindex = characters.push(character) - 1;
-	
-	initView.addCharacter(character, newindex);
+function rowAction(index, action) {
+	if (action == "copy") {
+		copyCharacter(index);
+	}
+	if (action == "delete") {
+		deleteCharacter(index);
+	}
+	if (action == "notes") {
+		retrieveNotes(index);
+	}
 }
 
-function deleteCharacter(e) {
-	var row = $(e.target).closest("tr");
-	var index = row.data("index");
-	
+function copyCharacter(index) {
+	var character = $.extend({}, characters[index]);
+	addCharacter(character);
+}
+
+function deleteCharacter(index) {
 	delete characters[index];
-	
-	if (row.hasClass("highlight")) {
-		highlightNext();
-	}
-	row.remove();
+	initView.deleteCharacter(index);	
 }
 
 function clearCharacters() {
-	debug("Clear Characters");
+	$.each(characters, function(index, character){
+		deleteCharacter(index);
+	});
 }
 
 function changeField(index, field, value) {
