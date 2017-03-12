@@ -15,6 +15,7 @@ function initialize() {
 	
 	initView = new InitiativeView();
 	notesView = new NotesView();
+	imgView = new ImageChooseView(".imgArea");
 	newCharacter();
 	highlightFirst();	
 

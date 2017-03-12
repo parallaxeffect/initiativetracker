@@ -1,13 +1,10 @@
 
-
 function InitiativeView() {
 	this.table = ".list";
 	this.addHeader();
 	
 	$(".list").on("change", ".initiative", this.sortList.bind(this));
-	$(".list").on("click", ".delete", this.buttonClicked.bind(this));
-	$(".list").on("click", ".copy", this.buttonClicked.bind(this));
-	$(".list").on("click", ".notes", this.buttonClicked.bind(this));
+	$(".list").on("click", ".button", this.buttonClicked.bind(this));
 	$(".list").on("blur", ".field", editField);
 }
 
@@ -40,7 +37,6 @@ function getContent(field, value) {
 			.append(value).append("<br>");
 	}
 	if (field.type == "input") {
-		debug ("value:" + value);
 		return $("<input type='number'>")
 			.addClass(field.field)
 			.val(value);
@@ -48,7 +44,7 @@ function getContent(field, value) {
 	if (field.type == "button") {
 		return $("<button>")
 			.attr("title", field.title)
-			.addClass(field.field)
+			.addClass(field.field).addClass(field.type)
 			.data("action", field.field)
 			.html(field.html);
 	}
@@ -130,12 +126,3 @@ function highlightNext() {
 		highlightFirst();
 	}
 }
-
-function selectNotes(e) {
-	var row = $(e.target).closest("tr");
-	var index = row.data("index");
-	
-	retrieveNotes(index);
-}
-	
-
