@@ -16,6 +16,10 @@ function initialize() {
 	initView = new InitiativeView();
 	notesView = new NotesView();
 	imgView = new ImageChooseView(".imgArea");
+	textView = new TextView(".textArea");
+	
+	textView.addText("Text here");
+	
 	newCharacter();
 	highlightFirst();	
 
