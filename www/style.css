@@ -51,6 +51,10 @@ td {
 	min-width: 40px;
 }
 
+.status {
+	min-width: 100px;
+}
+
 .initiative {
 	width: 50px;
 	font-size: 1em;

@@ -5,6 +5,7 @@ var fieldlist = [
 	{field: "HP", name: "HP", type: "field"},
 	{field: "AC", name: "AC", type: "field"},
 	{field: "DC", name: "DC", type: "field"},
+	{field: "status", name: "Status", type: "field"},
 	{field: "copy", name: "Cpy", type: "button", title: "Copy this character", html: "C"},
 	{field: "delete", name: "Del", type: "button", title: "Delete this character", html: "x"}, 
 	{field: "notes", name: "Notes", type: "button", title: "View notes", html: "&rarr;"}
